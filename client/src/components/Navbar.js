@@ -7,7 +7,7 @@ class Navbar extends Component{
             <div>
                 <ul>
                 <NavLink to="/games">Hoopr</NavLink>
-                <NavLink to="/users/:id">Dashboard</NavLink>
+                <NavLink to="`/users/${this.props.userId}`">Dashboard</NavLink>
                 <NavLink to="/games">Game List</NavLink>
                 <NavLink to="/signin">Log in</NavLink>
                 <NavLink to="/signup">Sign up</NavLink>

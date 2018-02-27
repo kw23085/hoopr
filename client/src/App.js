@@ -5,6 +5,7 @@ import Navbar from './components/Navbar.js';
 import Gamelist from './components/Gamelist.js';
 import Signup from './components/Signup.js';
 import Signin from './components/Signin.js';
+import User from './components/User.js';
 
 class App extends Component {
 
@@ -39,6 +40,12 @@ class App extends Component {
           <Route exact path='/signin' render={() => {
             return <Signin />
           }} />
+
+          <Route exact path='/users/:id' render={(props) => {
+            return <User userId={props.match.params.id}/>
+          }} />
+
+          
           
         </Switch>
 

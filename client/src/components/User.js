@@ -9,9 +9,9 @@ class User extends Component {
     }
   
     componentDidMount(){
-      axios({method: 'get', url: '/users'})
+      axios({method: 'get', url: `/users/${this.props.userId}`})
         .then((res)=> {
-          this.setState({games: res.data})
+          this.setState({user: res.data})
           console.log(res.data)
         })
     }
@@ -19,13 +19,10 @@ class User extends Component {
     render(){
       return (
         <div>
-          <h1>Game List</h1>
-          <ul>
-            {this.state.games.map((g, i) => <li key={i}>{g.date + ' -- ' + g.name + ' -- ' + g.time + ' -- ' + g.location}</li>)}
-          </ul>
+          <h2>{this.state.user.name}</h2>
         </div>
       )
     }
   }
 
-  export default Gamelist
+  export default User

@@ -46,7 +46,7 @@ class Signin extends Component{
                 <input type="text" ref="password" placeholder="Password"/>
                 <input type="submit" value="Sign in" className="btn btn-info" />
               </div>
-              {this.state.isLoggedIn && <Redirect to={`/user/${this.state.userId}`} />}
+              {this.state.isLoggedIn && <Redirect to={`/users/${this.state.userId}`} />}
             </form>
             <h2>{this.state.errMessage}</h2>
       </div>

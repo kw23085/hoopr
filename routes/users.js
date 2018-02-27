@@ -10,7 +10,7 @@ usersRouter.route('/')
 
 usersRouter.post('/authenticate', usersCtrl.authenticate)
 
-usersRouter.use(verifyToken) //*new line* All the routes after this point will need a verified token
+// usersRouter.use(verifyToken) //*new line* All the routes after this point will need a verified token
 
 usersRouter.route('/:id')
     .get(usersCtrl.show)
