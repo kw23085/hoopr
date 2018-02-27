@@ -27,7 +27,7 @@ module.exports = {
             
             const token = signToken(user)
 
-			res.json({success: true, message: "User created. Token attached", token})
+			res.json({success: true, message: "User created. Token attached", user})
 		})
 	},
 
@@ -60,7 +60,7 @@ module.exports = {
             
             const token = signToken(user)
 
-			res.json({success: true, message: "User authenticated. Token attached.", token})
+			res.json({success: true, message: "User authenticated. Token attached.", user})
 		})
 	}
 }
