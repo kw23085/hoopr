@@ -63,7 +63,7 @@ class App extends Component {
           }} />
 
           <Route exact path='/users/:id' render={(props) => {
-            return <User token={this.state.token} userId={props.match.params.id} setCurrentUser={this.setCurrentUser} currentUser={currentUser}/>
+            return <User token={this.state.token} userId={props.match.params.id} setCurrentUser={this.setCurrentUser} currentUser={this.state.currentUser}/>
           }} />
 
           <Route exact path='/games/:id' render={(props) => {

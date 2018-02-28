@@ -23,8 +23,8 @@ class User extends Component {
     render(){
       return (
         <div>
-          <h1>Hi</h1>
-          <h2>{this.state.user.name}</h2>
+          <h1>Dashboard</h1>
+          <h2>Name:{this.props.currentUser.name}</h2>
         </div>
       )
     }
