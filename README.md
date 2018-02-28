@@ -52,72 +52,45 @@ User will be able to form teams with other user and join tournaments and games.
 
 After understanding the project requirements I immediately started to create my ERD and Wireframe to get a better understanding of the scope of my app.
 
-Our **Trello board** helped immensely with this: 
+**Trello board**: 
 
-[https://trello.com/b/H47azMkh]()
+[https://trello.com/b/kRMfQkJX/project-4]()
 
 
-**2. We executed the simple stuff first**
+**2. Set up the back-end and have the flow of data ready for front-end**
 
-In the first day, we were able to complete the basics of our app including login, a user model and a sketch model. We also had a working canvas for drawing.
+I started by creating my server to make sure the app is able to create Users and Games.
 
-**3. Communication and Daily Stand-ups**
+**3. Work with front-end**
 
-After we completed the foundation, the rest of the project was a bit more complex. We broke up the pieces into smaller parts and worked together to figure out complex bugs. 
+After setting up the back-end I moved to the front end to work with react. I made sure I organized the react files in a neat and easy to read format.
 
 **4. Polish**
 
-Once we had most of our MVP complete, we did a lot of testing to find bugs and correct them and finalize issues.  
+Once the MVP is done. I made sure keep testing the features to find for bugs.
 
 --
 
 ###Major Hurdles & Victories
-* Staying on top of merge conflicts
-* Fixing the edit and update bugs
+* Implementation of the tokens.
+* Passing data between parent and children components.
 
 --
 ### If we had more time:
 * Make code more DRY and clean
-* Add canvas edit 
-* Add web sockets for playing pictionary
-* Reveal the giphy photo after
-* Add more dream features (see Trello ICE board)
-__
+* Allow User to create teams
+* Allow User to join games
+
+--
 
 ### Installation Instructions
 
-For easy-start, go to this heroku app:
-[http://sketchyapp.herokuapp.com/](Sketchy)
-
-To run this app, locally, you will need to register for your own API keys and do these following steps: 
-
-1. Fork it over to your git hub. 
-
-
-2. Do a git clone in your terminal from your github. 
-
-
-3. Add a .env file to your root of your application. 
- 
-
-4.  Get an APIKEY from [Giphy](https://developers.giphy.com/)
-5. Get a Client ID and Client secret from [Google Developers API](https://console.developers.google.com/apis/) 
-
-6. API keys should have no space in them. Use these 
-
-* APIKEY=**************
-* CLIENTID=*************
-* CLIENTSECRET=*********
-* GOOGLECALLBACK=http://localhost:3000/auth/google/redirect
-
-7. Run npm install to install all packages
-8. Open up a new tab and run $mongod
+1. Run npm install to install all packages
+2. Open up a new tab and run $mongod
 (If you don't already have Mongo, you will need to do a brew install)
-9. Open up another new tab and run $nodemon
+3. Open up another new tab and run $nodemon
 (If you don't already have Nodemon, you will need to do a brew install)
-10. Save your code and enjoy Sketchy!
-
-
+4. Save your code and enjoy Hoopr!
 
 --
 
