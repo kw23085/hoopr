@@ -23,6 +23,7 @@ class User extends Component {
     render(){
       return (
         <div>
+          <h1>Hi</h1>
           <h2>{this.state.user.name}</h2>
         </div>
       )
