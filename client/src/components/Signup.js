@@ -20,7 +20,8 @@ class Signup extends Component{
                 console.log(res)
                 this.setState({
                     isLoggedIn: true,
-                    userId: res.data.user._id
+                    userId: res.data.user._id,
+                    toker: res.data.user.token
                 })
             })
     }

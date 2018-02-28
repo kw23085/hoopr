@@ -5,7 +5,7 @@ module.exports = {
 	// list all users
 	index: (req, res) => {
 		User.find({}, (err, users) => {
-			res.json(users)
+			res.json({success: true, users})
 		})
 	},
 
@@ -14,7 +14,7 @@ module.exports = {
 		console.log("Current User:")
 		console.log(req.user)
 		User.findById(req.params.id, (err, user) => {
-			res.json(user)
+			res.json({success: true, user})
 		})
 	},
 
@@ -27,7 +27,7 @@ module.exports = {
             
             const token = signToken(user)
 
-			res.json({success: true, message: "User created. Token attached", user})
+			res.json({success: true, message: "User created. Token attached",token, user})
 		})
 	},
 
@@ -60,7 +60,7 @@ module.exports = {
             
             const token = signToken(user)
 
-			res.json({success: true, message: "User authenticated. Token attached.", user})
+			res.json({success: true, message: "User authenticated. Token attached.", token, user})
 		})
 	}
 }

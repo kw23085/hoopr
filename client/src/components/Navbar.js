@@ -3,11 +3,13 @@ import { NavLink } from 'react-router-dom'
 
 class Navbar extends Component{
     render(){
+        const dashboard = this.props.currentUser && <NavLink to={`/users/${this.props.currentUser._id}`}>Dashboard</NavLink>
         return(
             <div>
                 <ul>
                 <NavLink to="/games">Hoopr</NavLink>
-                <NavLink to="`/users/${this.props.userId}`">Dashboard</NavLink>
+                {dashboard}
+                {/* <NavLink to={`/users/${this.props.curre}`}>Dashboard</NavLink> */}
                 <NavLink to="/games">Game List</NavLink>
                 <NavLink to="/signin">Log in</NavLink>
                 <NavLink to="/signup">Sign up</NavLink>
@@ -17,5 +19,6 @@ class Navbar extends Component{
         )
     }
 }
+
 
 export default Navbar

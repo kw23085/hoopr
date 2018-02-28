@@ -24,6 +24,7 @@ class Signin extends Component{
             isLoggedIn: res.data.success,
             userId: res.data.user._id
           })
+          this.props.setToken(res.data.token)
         } else {
           this.setState({
             errMessage: res.data.message

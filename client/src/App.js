@@ -10,8 +10,21 @@ import User from './components/User.js';
 class App extends Component {
 
   state = {
-    users: [],
-    games: []
+    currentUser: null,
+    games: [],
+    token: null
+  }
+
+  setCurrentUser = (user) => {
+    this.setState({
+      currentUser: user
+    })
+  }
+
+  setToken = (token) => {
+    this.setState({
+      token
+    })
   }
 
   render() {
@@ -21,7 +34,7 @@ class App extends Component {
       <div className="App">
 
         {/* Navbar */}
-        <Navbar />
+        <Navbar currentUser={this.state.currentUser}/>
 
         <Switch>
 
@@ -38,11 +51,11 @@ class App extends Component {
           }} />
 
           <Route exact path='/signin' render={() => {
-            return <Signin />
+            return <Signin setToken={this.setToken} />
           }} />
 
           <Route exact path='/users/:id' render={(props) => {
-            return <User userId={props.match.params.id}/>
+            return <User token={this.state.token} userId={props.match.params.id} setCurrentUser={this.setCurrentUser}/>
           }} />
 
           

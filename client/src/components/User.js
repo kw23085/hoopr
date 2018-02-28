@@ -9,10 +9,14 @@ class User extends Component {
     }
   
     componentDidMount(){
-      axios({method: 'get', url: `/users/${this.props.userId}`})
+      axios({method: 'get', url: `/users/${this.props.userId}`, headers: { token: this.props.token}})
         .then((res)=> {
-          this.setState({user: res.data})
-          console.log(res.data)
+          if(res.data.success) {
+            this.setState({user: res.data.user})
+            console.log(res.data.user)
+            this.props.setCurrentUser(res.data.user)
+          }
+
         })
     }
   

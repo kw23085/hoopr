@@ -14,6 +14,7 @@ function signToken(user) {
 function verifyToken(req, res, next) {
     // grab token from either headers, req.body, or query string
     const token = req.get('token') || req.body.token || req.query.token
+    console.log(req)
     // if no token present, deny access
     if(!token) return res.json({success: false, message: "No token provided"})
     // otherwise, try to verify token
