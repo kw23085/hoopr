@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import './App.css';
 import { Redirect, Route, Switch } from 'react-router-dom';
+import clientAuth from './clientAuth.js';
 import Navbar from './components/Navbar.js';
 import Gamelist from './components/Gamelist.js';
 import Signup from './components/Signup.js';
 import Signin from './components/Signin.js';
 import User from './components/User.js';
+import Logout from './components/Logout.js';
 
 class App extends Component {
 
   state = {
-    currentUser: null,
+    currentUser: clientAuth.getCurrentUser(),
     games: [],
     token: null
   }
@@ -21,14 +23,20 @@ class App extends Component {
     })
   }
 
-  setToken = (token) => {
+  onSignInSuccess = (user) => {
     this.setState({
-      token
+      currentUser: user
+    })
+  }
+
+  onLogout() {
+    this.setState({
+      currentUser: null
     })
   }
 
   render() {
-    const { games } = this.state.games
+    const { currentUser } = this.state
 
     return (
       <div className="App">
@@ -43,19 +51,23 @@ class App extends Component {
           }} />
 
           <Route exact path='/games' render={() => {
-            return <Gamelist games={ games } />
+            return <Gamelist loggedIn={!!currentUser} />
           }} />
 
           <Route exact path='/signup' render={() => {
             return <Signup />
           }} />
 
-          <Route exact path='/signin' render={() => {
-            return <Signin setToken={this.setToken} />
+          <Route exact path='/signin' render={(props) => {
+            return <Signin history={props.history} onSignInSuccess={this.onSignInSuccess.bind(this)} />
           }} />
 
           <Route exact path='/users/:id' render={(props) => {
             return <User token={this.state.token} userId={props.match.params.id} setCurrentUser={this.setCurrentUser}/>
+          }} />
+
+          <Route exact path='/logout' render={(props) => {
+            return <Logout onLogout={this.onLogout.bind(this)} />
           }} />
 
           

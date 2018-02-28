@@ -24,7 +24,7 @@ module.exports = {
             console.log(err)
             if(err) return res.json({success: false, code: err.code})
             
-			res.json({success: true, message: "Game created."})
+			res.json({success: true, message: "Game created.", game})
 		})
 	},
 

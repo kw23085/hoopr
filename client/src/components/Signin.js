@@ -1,58 +1,48 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import { Redirect } from 'react-router-dom';
+import React from 'react'
+import clientAuth from '../clientAuth'
 
+class SignIn extends React.Component {
+	state = {
+		fields: { email: '', password: ''}
+	}
 
-class Signin extends Component{
+	onInputChange(evt) {
+		this.setState({
+			fields: {
+				...this.state.fields,
+				[evt.target.name]: evt.target.value
+			}
+		})
+	}
 
-  state = {
-    isLoggedIn: false
-  }
-
-  onSubmit = (event) => {
-    event.preventDefault()
-
-    const userInfo = {
-      email: this.refs.email.value,
-      password: this.refs.password.value
-    }
-    axios.post('/users/authenticate', userInfo)
-      .then((res) => {
-        console.log(res)
-        if(res.data.success) {
-          this.setState({
-            isLoggedIn: res.data.success,
-            userId: res.data.user._id
-          })
-          this.props.setToken(res.data.token)
-        } else {
-          this.setState({
-            errMessage: res.data.message
-          })
-        }
-      })
-  }
-
-  render(){
-    return(
-      <div>
-          <h1>Sign in!</h1>
-            <form onSubmit={this.onSubmit}>
-              <div>
-                <label>Email:</label>
-                <input type="text" ref="email" placeholder="Email"/>
-              </div>
-              <div>
-                <label>Password:</label>
-                <input type="text" ref="password" placeholder="Password"/>
-                <input type="submit" value="Sign in" className="btn btn-info" />
-              </div>
-              {this.state.isLoggedIn && <Redirect to={`/users/${this.state.userId}`} />}
-            </form>
-            <h2>{this.state.errMessage}</h2>
-      </div>
-    )
-  }
+	onFormSubmit(evt) {
+		evt.preventDefault()
+		clientAuth.logIn(this.state.fields).then(user => {
+			this.setState({ fields: { email: '', password: '' } })
+			if(user) {
+				this.props.onSignInSuccess(user)
+				this.props.history.push(`/games`)
+			}
+		})
+	}
+	
+	render() {
+    const { email, password } = this.state.fields
+		return (
+			<div className='SignIn'>
+				<div className='row'>
+					<div className='column column-33 column-offset-33'>
+						<h1>Log In</h1>
+						<form onChange={this.onInputChange.bind(this)} onSubmit={this.onFormSubmit.bind(this)}>
+							<input type="text" placeholder="Email" name="email" value={email} />
+							<input type="password" placeholder="Password" name="password" value={password} />
+							<button>Log In</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		)
+	}
 }
 
-export default Signin
+export default SignIn
